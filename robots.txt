@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://c8yops.github.io/c8yops.github.io.git/sitemap.xml.gz
