@@ -271,6 +271,7 @@ a reference to a commit; can have a **tracked upstream**
 a reference (standard) or an object (annotated)
 ||| Head
 a place where your **working directory** is now
+|||
 
 ## 10 Ignoring Files
 
