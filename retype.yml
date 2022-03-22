@@ -6,7 +6,8 @@ branding:
   title: C8YOPS
   label: v0.0.2
 links:
-- text: Getting Started
-  link: https://retype.com/guides/getting-started/
+- text: Home
+  link: /README.md
+  icon: home
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."
