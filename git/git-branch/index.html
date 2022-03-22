@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-root" content="/c8yops.github.io.git">
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- See retype.com -->
@@ -16,24 +15,24 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://c8yops.github.io/c8yops.github.io.git/git/git-branch/">
+    <meta property="og:url" content="https://c8yops.github.io/git/git-branch/">
     <meta property="og:title" content="Working With Branches in Git">
     <meta property="og:description" content="This is where the fun starts. Simply type this command to create a new branch, so that you can work on a feature or fix a bug in isolation:">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://c8yops.github.io/c8yops.github.io.git/git/git-branch/">
+    <meta property="twitter:url" content="https://c8yops.github.io/git/git-branch/">
     <meta property="twitter:title" content="Working With Branches in Git">
     <meta property="twitter:description" content="This is where the fun starts. Simply type this command to create a new branch, so that you can work on a feature or fix a bug in isolation:">
 
-    <script>(function () { var el = document.documentElement, m = localStorage.getItem("/c8yops.github.io.git/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/c8yops.github.io.git/resources/css/retype.css?v=2.0.701252909267" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.0.701253184878" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/c8yops.github.io.git/resources/js/config.js?v=2.0.701252909267" defer data-turbo-track="reload"></script>
-    <script type="text/javascript" src="/c8yops.github.io.git/resources/js/retype.js?v=2.0" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/c8yops.github.io.git/resources/js/lunr.js?v=2.0.701252909267" defer></script>
-    <script id="prism-js" type="text/javascript" src="/c8yops.github.io.git/resources/js/prism.js?v=2.0.701252909267" defer></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.0.701253184878" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/retype.js?v=2.0" defer data-turbo-track="reload"></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.0.701253184878" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.0.701253184878" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -48,7 +47,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="/c8yops.github.io.git/" class="flex items-center leading-snug text-2xl">
+                        <a id="docs-site-logo" href="/" class="flex items-center leading-snug text-2xl">
                             <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewBox="0 0 128 128"><defs><linearGradient id="a" x1="112.889" y1="114.956" x2="15.11" y2="17.177" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5b6e"/><stop offset="1" stop-color="#8a87e0"/></linearGradient></defs><path d="M91.818,22.745a5.47,5.47,0,0,0,.217-7.3,1.75,1.75,0,1,1,2.676-2.256,8.967,8.967,0,0,1-.356,11.968l-4.4,4.625a1.75,1.75,0,0,1-2.537-2.411Zm32.34,37.322-3.883,4.085a1.75,1.75,0,1,1-2.537-2.411l3.883-4.085a10.465,10.465,0,0,0-7.585-17.674h-1.084A18.4,18.4,0,0,0,98.508,47.06a1.75,1.75,0,0,1-2.766,0,18.108,18.108,0,0,0-4.489-4.124L74.946,60.094,95.175,81.379a1.748,1.748,0,0,1,.344,1.886l-3.376,8h9.964l-3.376-8a1.748,1.748,0,0,1,.344-1.886l3.234-3.4a1.75,1.75,0,1,1,2.537,2.411L102.4,82.959l3.956,9.372a1.748,1.748,0,0,1-1.612,2.43h-1.938a19.534,19.534,0,0,1-1.274,5.738,10.1,10.1,0,0,0,0,7.173,21.592,21.592,0,0,1,0,14.987,8.48,8.48,0,0,0-.658,3.588,1.751,1.751,0,0,1-1.75,1.75h-8a1.751,1.751,0,0,1-1.75-1.75,19.721,19.721,0,0,1,1.342-7.493,10.109,10.109,0,0,0,0-7.175,21.589,21.589,0,0,1,0-14.983,10.1,10.1,0,0,0,.536-1.835H89.505a1.748,1.748,0,0,1-1.612-2.43l3.956-9.372L72.532,62.635,70.6,64.671l5.762,13.648a1.749,1.749,0,0,1-1.612,2.431h-5v45.5A1.751,1.751,0,0,1,68,128H60a1.751,1.751,0,0,1-1.75-1.75V80.75h-5a1.749,1.749,0,0,1-1.612-2.431L57.4,64.671l-1.935-2.036L36.151,82.959l3.957,9.372a1.749,1.749,0,0,1-1.612,2.43H36.749a10.08,10.08,0,0,0,.535,1.833,21.584,21.584,0,0,1,0,14.984,10.109,10.109,0,0,0,0,7.175,19.732,19.732,0,0,1,1.342,7.494,1.751,1.751,0,0,1-1.75,1.75h-8a1.751,1.751,0,0,1-1.75-1.75,8.472,8.472,0,0,0-.658-3.587,21.592,21.592,0,0,1,0-14.987,10.1,10.1,0,0,0,0-7.17,19.553,19.553,0,0,1-1.275-5.742H23.255a1.748,1.748,0,0,1-1.612-2.43L25.6,82.959,3.842,60.067a13.949,13.949,0,0,1-.555-18.619h0a13.937,13.937,0,0,1,10.678-4.966h1.084A21.945,21.945,0,0,1,30.873,43.3a21.527,21.527,0,0,1,3.437-2.931L26.4,32.045a1.75,1.75,0,0,1,2.538-2.411l9.385,9.875h0L56.737,58.888l0,0,3.991,4.2a1.753,1.753,0,0,1,.344,1.887L55.892,77.25H72.108L66.926,64.977a1.751,1.751,0,0,1,.344-1.887l3.991-4.2,0,0L89.68,39.51h0l9.385-9.875A15.476,15.476,0,0,0,87.849,3.5H86.32a26.672,26.672,0,0,0-20.937,10.26,1.811,1.811,0,0,1-2.766,0A26.672,26.672,0,0,0,41.68,3.5H40.534a16.011,16.011,0,0,0-11.345,4.55A15.392,15.392,0,0,0,24.836,21.2a1.75,1.75,0,1,1-3.464.5A18.862,18.862,0,0,1,26.705,5.582,19.532,19.532,0,0,1,40.534,0H41.68A30.219,30.219,0,0,1,64,9.958,30.217,30.217,0,0,1,86.32,0h1.529A18.976,18.976,0,0,1,101.6,32.045L93.69,40.372A21.527,21.527,0,0,1,97.127,43.3a21.943,21.943,0,0,1,15.825-6.821h1.084a13.965,13.965,0,0,1,10.122,23.585ZM33.215,94.761H28.7a15.894,15.894,0,0,0,1.064,4.549,13.595,13.595,0,0,1,0,9.549,18.09,18.09,0,0,0,0,12.611,12.091,12.091,0,0,1,.777,3.027h4.521a15.942,15.942,0,0,0-1.066-4.554,13.607,13.607,0,0,1,0-9.551,18.086,18.086,0,0,0,0-12.607A12.052,12.052,0,0,1,33.215,94.761ZM53.054,60.094,36.747,42.936a18.108,18.108,0,0,0-4.489,4.124,1.811,1.811,0,0,1-2.766,0,18.4,18.4,0,0,0-14.444-7.078H13.964a10.442,10.442,0,0,0-8,3.722h0a10.453,10.453,0,0,0,.417,13.952L28.925,81.379a1.748,1.748,0,0,1,.344,1.886l-3.376,8h9.964l-3.376-8a1.748,1.748,0,0,1,.344-1.886ZM66.25,80.75h-4.5V124.5h4.5ZM94.785,94.761a12.014,12.014,0,0,1-.777,3.022,18.084,18.084,0,0,0,0,12.606,13.607,13.607,0,0,1,0,9.551,15.954,15.954,0,0,0-1.067,4.557h4.521a12.088,12.088,0,0,1,.776-3.024,18.09,18.09,0,0,0,0-12.611,13.592,13.592,0,0,1,0-9.548,15.947,15.947,0,0,0,1.065-4.553Zm16.191-25.9-1.905,2a1.75,1.75,0,1,0,2.537,2.411l1.905-2a1.75,1.75,0,0,0-2.537-2.411Zm6.09-20.965a1.75,1.75,0,1,0-2.675,2.256.465.465,0,0,1-.019.619L110.7,54.635a1.75,1.75,0,1,0,2.537,2.411l3.677-3.868A3.959,3.959,0,0,0,117.066,47.892Z" fill="url(#a)"/></svg>
                             </span>
@@ -366,7 +365,7 @@
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/c8yops.github.io.git/git/git-vc/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/git/git-vc/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
