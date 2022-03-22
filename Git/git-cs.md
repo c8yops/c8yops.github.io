@@ -263,13 +263,14 @@ Push local branch to **remote** repository. Set its copy as an upstream.
 git push -u [remote] [branch]
 ```
 
-||| Commit
+!!! Commit
 an object
-||| Branch
+!!! Branch
 a reference to a commit; can have a **tracked upstream**
-||| Tag
+!!! Tag
 a reference (standard) or an object (annotated)
-|||
+!!! Head
+a place where your **working directory** is now
 
 ## 10 Ignoring Files
 
