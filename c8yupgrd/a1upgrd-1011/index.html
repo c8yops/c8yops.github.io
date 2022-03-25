@@ -9,18 +9,21 @@
     <meta name="generator" content="Retype 2.1">
 
     <!-- Primary Meta Tags -->
-    <title>Welcome to c8yops guides</title>
-    <meta name="title" content="Welcome to c8yops guides">
+    <title>Upgrade of A1D environment to 10.11</title>
+    <meta name="title" content="Upgrade of A1D environment to 10.11">
+    <meta name="description" content="Log into management node. Download new chef components from yum in your home folder." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://c8yops.github.io/">
-    <meta property="og:title" content="Welcome to c8yops guides">
+    <meta property="og:url" content="https://c8yops.github.io/c8yupgrd/a1upgrd-1011/">
+    <meta property="og:title" content="Upgrade of A1D environment to 10.11">
+    <meta property="og:description" content="Log into management node. Download new chef components from yum in your home folder.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://c8yops.github.io/">
-    <meta property="twitter:title" content="Welcome to c8yops guides">
+    <meta property="twitter:url" content="https://c8yops.github.io/c8yupgrd/a1upgrd-1011/">
+    <meta property="twitter:title" content="Upgrade of A1D environment to 10.11">
+    <meta property="twitter:description" content="Log into management node. Download new chef components from yum in your home folder.">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -29,6 +32,7 @@
     <script type="text/javascript" src="/resources/js/config.js?v=2.1.701526204517" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.1" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.1.701526204517" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.1.701526204517" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -168,12 +172,203 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="welcome-to-c8yops-guides" class="break-words">
+<doc-anchor-target id="upgrade-of-a1d-environment-to-1011" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#welcome-to-c8yops-guides">#</doc-anchor-trigger>
-        <span>Welcome to c8yops guides</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#upgrade-of-a1d-environment-to-1011">#</doc-anchor-trigger>
+        <span>Upgrade of A1D environment to 10.11</span>
     </h1>
 </doc-anchor-target>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-300" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Tip: We make sure to remove the cores from the monitoring. !!!</h5>
+<ol>
+<li><p>Log into <strong>management</strong> node. Download new chef components from yum in your home folder.</p>
+</li>
+<li><p>Extract, rename the folder and copy into the c8y folder.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">tar -xvf [archive.tar]
+cd /root/cumulocity/
+mv /home/[user]/cumulocity-chef ./cumulocity-chef-release-pack-v[version]/</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Copy from the old version the following folders and files</p>
+<ul>
+<li>.chef</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cp -r ../cumulocity-chef/.chef/ ./</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>data bags</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd data_bags/
+cp -r ../cumulocity-chef/data_bags/users_cumulocity/ ./</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>cumulocity-monitoring-agent</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd cookbooks/
+rm -rf cumulocity-monitoring-agent/
+cp -r ../../cumulocity-chef/cookbooks/cumulocity-monitoring-agent/ ./</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>environments file</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd environments/
+cp -r ../../cumulocity-chef/environments/[environemt-file] ./</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Make the necessary changes in the environment file and any other changes that are present in the Worklog.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-300" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Tip: We check the connection to the environment with <code v-pre>knife node list</code>. !!!</h5>
+        </div>
+    </div>
+</div>
+</li>
+<li><p>Remove one of the core nodes from the load balancers.</p>
+<ul>
+<li>On <strong>management</strong> node</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">knife node list
+knife node run_list remove [core] 'role[cumulocity-mn-active-core]'</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>On <strong>load balancers</strong></li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">chef-client</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Log into <strong>Kubernetes master</strong> node and check <code v-pre>cc-values.yml</code> file.</p>
+</li>
+<li><p>Go back to the <strong>management</strong> node, remove the symlink and direct the new one.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">rm cumulocity-chef
+ln -s cumulocity-chef-release-pack-v[version]/ cumulocity-chef</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Upload the new cookbooks.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">knife cookbook upload --all
+knife environment from file environments/[environment-file]</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Go to <strong>Kubernetes master</strong> node and run <code v-pre>chef-client</code>. Once finished, check <code v-pre>cc-values.yml</code> file and copy it into <code v-pre>/root/</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">chef-client
+cd /etc/kubernetes/core
+cp cc_values.yml /root/values-[new].yml</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Check the differences between the old and new file and make the necessary changes in the file.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd /root/
+diff values-[old].yml values-[new].yml
+vim values-[new].yml</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Update the helm repo and do an upgrade using the new <code v-pre>cc-values.yml</code> file.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">helm repo update
+helm upgrade cumulocity-core stack/cumulocity-core -f /root/values-[new].yml --namespace=cumulocity-core --version [version]</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Delete the pod with the core node and monitor until the core is back online.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">kubectl -n cumulocity-core get pods -o wide
+kubectl -n cumulocity-core delete pod c8ycore-sts-[X]</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Monitor the DB index creation. Progress of the index migration is verified via checking Karaf&#x27;s log file. The
+process ends if no new entry appears in the log files: <code v-pre>MongoDB - Create index(db:{}, collection:{}, index:{}) ...</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">kc -n cumulocity-core logs -f c8ycore-sts-1 cumulocity-core | grep index</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Check tenant health by logging into the <strong>core</strong> node and running the below command.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">curl -s http://127.0.0.1:8181/tenant/health | jq</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Once everything has finished we bring back the core to the load balancers.</p>
+<ul>
+<li>On <strong>management</strong> node</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">knife node list
+knife node run_list add [core] 'role[cumulocity-mn-active-core]'</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>On <strong>load balancers</strong></li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">chef-client</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>We do the same for the rest of the core nodes one-by-one.</p>
+<ul>
+<li>On <strong>management</strong> node</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">knife node list
+knife node run_list remove [core] 'role[cumulocity-mn-active-core]'</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>On <strong>load balancers</strong></li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">chef-client</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>On <strong>Kubernetes master</strong></li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">kubectl -n cumulocity-core get pods -o wide
+kubectl -n cumulocity-core delete pod c8ycore-sts-[X]</code></pre>
+</doc-codeblock></div>
+<ul>
+<li>Once finished, we add the core back to the load balancer(Step 15) and repeat the above steps for the next core.</li>
+</ul>
+</li>
+<li><p>If not automatically upgraded, log back to the <strong>core</strong> and place the downloaded new microservices into the /2Images/ folder.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd /webapps/2Images/
+cp /home/[user]/ms-1011.0.12/*.zip ./</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Check if lwm2m and ssl are installed on the agent node.</p>
+</li>
+</ol>
+        </div>
+    </div>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
@@ -183,13 +378,20 @@
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Welcome</span>
+                                            </span>
+                                        </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/c8yupgrd/a1upgrd-1011/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/git/git-cs/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Upgrade of A​1​D environment to 10.​11</span>
+                                                <span class="block mt-1">Git Cheat Sheet</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -233,6 +435,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Welcome", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Upgrade of A1D environment to 10.11", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
