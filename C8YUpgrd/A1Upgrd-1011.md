@@ -44,7 +44,7 @@ We make sure to remove the cores from the monitoring.
      cp -r ../../cumulocity-chef/environments/[environemt-file] ./
      ```
 
-4. Make the necessary changes in the environment file and any other changes that are present in the Worklog.
+4. Make the necessary changes in the environment file and any other changes that are present in the Work log.
 
     !!!
     We check the connection to the environment with `knife node list`. 
@@ -171,4 +171,4 @@ collection:{}, index:{}) ...`
      cp /home/[user]/ms-1011.0.12/*.zip ./
      ```
 
-18. Check if lwm2m and ssl are installed on the agent node.
+18. Check if lwm2m and SSL are installed on the agent node.
