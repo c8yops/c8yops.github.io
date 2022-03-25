@@ -1,4 +1,4 @@
-# Upgrade of A1D environment to 10.11
+# Upgrade of a C8Y environment
 
 !!!info Info: 
 We make sure to remove the cores from the monitoring. 
