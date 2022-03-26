@@ -81,7 +81,7 @@ We make sure to remove the cores from the monitoring.
      knife environment from file environments/[environment-file]
      ```
 
-9. Go to **Kubernetes master** node and run `chef-client`. Once finished, check `cc-values.yml` file and copy it into `/root/`.
+9. Go to **Kubernetes master** node and run `chef-client`. Once finished, check the newly generated `cc-values.yml` file and copy it into `/root/`.
 
      ```bash
      chef-client
@@ -170,14 +170,22 @@ collection:{}, index:{}) ...`
 
      - Once finished, we add the core back to the load balancer(Step 15) and repeat the above steps for the next core.
 
-17. If not automatically upgraded, log back to the **core** and place the downloaded new microservices into the /2Images/ folder.
+17. If not automatically upgraded, log back to the **core**, download the new microservices and place the files into the /2Images/ folder.
 
      ```bash
+     cd /home/[user]
+     wget [parameters_app_1-n]
      cd /webapps/2Images/
      cp /home/[user]/ms-1011.0.12/*.zip ./
      ```
 
-18. Check if lwm2m and SSL are installed on the **agent** node.
+18. Upgrade the UI apps by using the `ui_deploy.sh` script on your local machine.
+
+     ```bash
+     bash ui_deploy.sh -i https://[tenant-url] -u [user@email] -p '[password]' -v [version]
+     ```
+
+19. Check if lwm2m and SSL are installed on the **agent** node.
 
      ```bash
      rpm -qa | grep lwm2m
