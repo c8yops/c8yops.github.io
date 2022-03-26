@@ -1,7 +1,7 @@
 # Upgrade of a C8Y environment
 
-!!!info Info: 
-We make sure to remove the cores from the monitoring. 
+!!!info Info:
+We make sure to remove the cores from the monitoring.
 !!!
 
 1. Log into **management** node. Download new chef components from yum in your home folder.
@@ -47,7 +47,7 @@ We make sure to remove the cores from the monitoring.
 4. Make the necessary changes in the environment file and any other changes that are present in the Work log.
 
     !!!
-    We check the connection to the environment with `knife node list`. 
+    We check the connection to the environment with `knife node list`.
     !!!
 
 5. Remove one of the core nodes from the load balancers.
@@ -140,6 +140,12 @@ collection:{}, index:{}) ...`
      chef-client
      ```
 
+      - Check if openresty has been upgraded
+
+      ```bash
+      rpm -qa | grep openre
+      ```
+
 16. We do the same for the rest of the core nodes one-by-one.
 
      - On **management** node
@@ -171,4 +177,9 @@ collection:{}, index:{}) ...`
      cp /home/[user]/ms-1011.0.12/*.zip ./
      ```
 
-18. Check if lwm2m and SSL are installed on the agent node.
+18. Check if lwm2m and SSL are installed on the **agent** node.
+
+     ```bash
+     rpm -qa | grep lwm2m
+     rpm -qa | grep ssl
+     ```
