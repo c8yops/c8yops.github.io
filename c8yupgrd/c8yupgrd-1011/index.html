@@ -27,12 +27,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=2.1.701603575816" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=2.1.701604075131" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=2.1.701603575816" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=2.1.701604075131" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.1" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.1.701603575816" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.1.701603575816" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.1.701604075131" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.1.701604075131" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -284,7 +284,7 @@ ln -s cumulocity-chef-release-pack-v[version]/ cumulocity-chef</code></pre>
 knife environment from file environments/[environment-file]</code></pre>
 </doc-codeblock></div>
 </li>
-<li><p>Go to <strong>Kubernetes master</strong> node and run <code v-pre>chef-client</code>. Once finished, check <code v-pre>cc-values.yml</code> file and copy it into <code v-pre>/root/</code>.</p>
+<li><p>Go to <strong>Kubernetes master</strong> node and run <code v-pre>chef-client</code>. Once finished, check the newly generated <code v-pre>cc-values.yml</code> file and copy it into <code v-pre>/root/</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">chef-client
 cd /etc/kubernetes/core
@@ -367,10 +367,17 @@ kubectl -n cumulocity-core delete pod c8ycore-sts-[X]</code></pre>
 <li>Once finished, we add the core back to the load balancer(Step 15) and repeat the above steps for the next core.</li>
 </ul>
 </li>
-<li><p>If not automatically upgraded, log back to the <strong>core</strong> and place the downloaded new microservices into the /2Images/ folder.</p>
+<li><p>If not automatically upgraded, log back to the <strong>core</strong>, download the new microservices and place the files into the /2Images/ folder.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd /webapps/2Images/
+<pre class="language-bash"><code v-pre class="language-bash">cd /home/[user]
+wget [parameters_app_1-n]
+cd /webapps/2Images/
 cp /home/[user]/ms-1011.0.12/*.zip ./</code></pre>
+</doc-codeblock></div>
+</li>
+<li><p>Upgrade the UI apps by using the <code v-pre>ui_deploy.sh</code> script on your local machine.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">bash ui_deploy.sh -i https://[tenant-url] -u [user@email] -p '[password]' -v [version]</code></pre>
 </doc-codeblock></div>
 </li>
 <li><p>Check if lwm2m and SSL are installed on the <strong>agent</strong> node.</p>
